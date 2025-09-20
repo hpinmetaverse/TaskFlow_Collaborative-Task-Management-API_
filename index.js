@@ -1,5 +1,3 @@
-// index.js (UPDATED for Environment Variables)
-
 require('dotenv').config(); // MUST BE THE FIRST LINE to load .env variables
 
 const express = require('express');
