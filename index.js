@@ -1,19 +1,21 @@
-// index.js (Final Update for User Registration)
+// index.js (UPDATED for Environment Variables)
+
+require('dotenv').config(); // MUST BE THE FIRST LINE to load .env variables
 
 const express = require('express');
 const mongoose = require('mongoose');
-const authRoutes = require('./routes/authRoutes'); // 1. Import our authentication routes
+const authRoutes = require('./routes/authRoutes');
 
 const app = express();
-const PORT = 3000;
+const PORT = process.env.PORT || 3000; // Good practice to use env var for port too
 
 // --- MIDDLEWARES ---
-// This line is CRITICAL: It tells your Express app to understand incoming JSON data in requests
 app.use(express.json());
 // --- END MIDDLEWARES ---
 
-const dbConnectionString = "mongodb+srv://taskflow-admin:Gaju%401320@cluster0.t2tkdkg.mongodb.net/taskflowDB?retryWrites=true&w=majority";
-// NOTE: Remember to update this with your SECURE password after changing it in Atlas!
+// Now reading from environment variables!
+const dbConnectionString = process.env.MONGO_URI; 
+// CRITICAL: Ensure you've changed your password in Atlas and updated .env!
 
 mongoose.connect(dbConnectionString)
   .then(() => {
@@ -24,14 +26,12 @@ mongoose.connect(dbConnectionString)
   });
 
 // --- ROUTES ---
-// 2. Tell Express to use our authRoutes for any requests starting with /api/auth
 app.use('/api/auth', authRoutes);
 
-// Basic test route
 app.get('/', (req, res) => {
     res.send('Server is running and connected to DB. User registration ready!');
 });
-// --- END ROUTES ---
 
 app.listen(PORT, () => {
-    console.log(`🚀 Server is now live on http://localhost:${PORT}`);});
+    console.log(`🚀 Server is now live on http://localhost:${PORT}`);
+});
