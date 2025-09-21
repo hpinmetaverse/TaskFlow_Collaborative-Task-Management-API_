@@ -1,12 +1,20 @@
+// models/Task.js (UPDATED to link to Workspace)
+
 const mongoose = require('mongoose');
 
-// Define the blueprint (schema) for a Task
 const taskSchema = new mongoose.Schema({
-    user: { // The user who created this task
-        type: mongoose.Schema.Types.ObjectId, // This stores the ID of the User
-        ref: 'User', // This tells Mongoose that the ID refers to the 'User' model
+    user: { 
+        type: mongoose.Schema.Types.ObjectId,
+        ref: 'User',
         required: true
     },
+    // --- NEW FIELD ---
+    workspace: { // The workspace this task belongs to
+        type: mongoose.Schema.Types.ObjectId,
+        ref: 'Workspace',
+        required: true // Every task MUST belong to a workspace
+    },
+    // --- END NEW FIELD ---
     title: {
         type: String,
         required: true,
@@ -19,18 +27,17 @@ const taskSchema = new mongoose.Schema({
     },
     status: {
         type: String,
-        enum: ['pending', 'in-progress', 'completed'], // Task can only have these statuses
+        enum: ['pending', 'in-progress', 'completed'],
         default: 'pending'
     },
     dueDate: {
-        type: Date, // Optional due date
+        type: Date,
         default: null
     }
 }, {
-    timestamps: true // Adds 'createdAt' and 'updatedAt' fields automatically
+    timestamps: true
 });
 
-// Create the Task model from the schema
 const Task = mongoose.model('Task', taskSchema);
 
-module.exports = Task; // Export it so we can use it in other files
+module.exports = Task;
