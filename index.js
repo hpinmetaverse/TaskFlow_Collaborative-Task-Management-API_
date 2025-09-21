@@ -1,11 +1,12 @@
-// index.js (Final Update for Task Management)
+// index.js (UPDATED for Workspaces)
 
 require('dotenv').config();
 
 const express = require('express');
 const mongoose = require('mongoose');
 const authRoutes = require('./routes/authRoutes');
-const taskRoutes = require('./routes/taskRoutes'); // Import task routes
+const taskRoutes = require('./routes/taskRoutes');
+const workspaceRoutes = require('./routes/workspaceRoutes');
 
 const app = express();
 const PORT = process.env.PORT || 3000;
@@ -26,11 +27,12 @@ mongoose.connect(dbConnectionString)
 
 // --- ROUTES ---
 app.use('/api/auth', authRoutes);
-app.use('/api/tasks', taskRoutes); // Add the task routes
+app.use('/api/tasks', taskRoutes);
+app.use('/api/workspaces', workspaceRoutes); // Add the workspace routes
 // --- END ROUTES ---
 
 app.get('/', (req, res) => {
-    res.send('Server is running and connected to DB. Task management ready!');
+    res.send('Server is running. TaskFlow API (with Workspaces) is ready!');
 });
 
 app.listen(PORT, () => {
