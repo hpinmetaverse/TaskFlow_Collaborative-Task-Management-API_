@@ -1,19 +1,20 @@
-require('dotenv').config(); // MUST BE THE FIRST LINE to load .env variables
+// index.js (Final Update for Task Management)
+
+require('dotenv').config();
 
 const express = require('express');
 const mongoose = require('mongoose');
 const authRoutes = require('./routes/authRoutes');
+const taskRoutes = require('./routes/taskRoutes'); // Import task routes
 
 const app = express();
-const PORT = process.env.PORT || 3000; // Good practice to use env var for port too
+const PORT = process.env.PORT || 3000;
 
 // --- MIDDLEWARES ---
 app.use(express.json());
 // --- END MIDDLEWARES ---
 
-// Now reading from environment variables!
 const dbConnectionString = process.env.MONGO_URI; 
-// CRITICAL: Ensure you've changed your password in Atlas and updated .env!
 
 mongoose.connect(dbConnectionString)
   .then(() => {
@@ -25,9 +26,11 @@ mongoose.connect(dbConnectionString)
 
 // --- ROUTES ---
 app.use('/api/auth', authRoutes);
+app.use('/api/tasks', taskRoutes); // Add the task routes
+// --- END ROUTES ---
 
 app.get('/', (req, res) => {
-    res.send('Server is running and connected to DB. User registration ready!');
+    res.send('Server is running and connected to DB. Task management ready!');
 });
 
 app.listen(PORT, () => {
