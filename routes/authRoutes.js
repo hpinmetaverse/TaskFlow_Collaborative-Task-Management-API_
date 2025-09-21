@@ -1,10 +1,13 @@
 const express = require('express');
-const { registerUser } = require('../controllers/userController'); // Import registerUser function
+// Import both registerUser and loginUser from the controller
+const { registerUser, loginUser } = require('../controllers/userController'); 
 
-const router = express.Router(); // Create an Express Router to handle these specific routes
+const router = express.Router();
 
 // Define the route for user registration
-// This route will handle POST requests to /register
 router.post('/register', registerUser);
 
-module.exports = router; // Export the router so index.js can use it
+// Define the route for user login
+router.post('/login', loginUser); // Add this new login route
+
+module.exports = router;
