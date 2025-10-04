@@ -1,15 +1,12 @@
 const express = require('express');
-const { createTask, getMyTasks } = require('../controllers/taskController'); // Import task functions
-const protect = require('../middleware/auth'); // Import our auth middleware
+const { createTask, getMyTasks, updateTask, deleteTask } = require('../controllers/taskController');
+const protect = require('../middleware/auth');
 
 const router = express.Router();
 
-// Route to create a new task
-// It's PROTECTED: 'protect' middleware runs first, then createTask
-router.post('/', protect, createTask); 
-
-// Route to get all tasks for the logged-in user
-// It's PROTECTED: 'protect' middleware runs first, then getMyTasks
+router.post('/', protect, createTask);
 router.get('/', protect, getMyTasks);
+router.put('/:id', protect, updateTask);
+router.delete('/:id', protect, deleteTask);
 
 module.exports = router;
