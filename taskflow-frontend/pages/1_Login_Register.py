@@ -11,19 +11,19 @@ st.set_page_config(page_title="Login / Register", page_icon="🔐", layout="cent
 # Sidebar status
 with st.sidebar:
     token = st.session_state.get("token")
-    user_email = st.session_state.get("email")
+    user_email = st.session_state.get("user_email")
     if token:
         st.markdown(f"**Logged in as:** {user_email}")
         if st.button("Logout"):
             st.session_state.pop("token", None)
-            st.session_state.pop("email", None)
+            st.session_state.pop("user_email", None)
             st.success("Logged out.")
-            st.experimental_rerun()
+            st.rerun()
     else:
         st.markdown("**Status:** Logged Out")
 
 
-st.title("User Authentication")
+st.title("👤 User Authentication")
 
 login_tab, register_tab = st.tabs(["Login", "Register"])
 
@@ -96,9 +96,9 @@ with login_tab:
 
                     if token_value:
                         st.session_state["token"] = token_value
-                        st.session_state["email"] = payload["email"]
+                        st.session_state["user_email"] = payload["email"]
                         st.success("Logged in successfully.")
-                        st.experimental_rerun()
+                        st.rerun()
                     else:
                         st.error("Login response missing token.")
                 else:
