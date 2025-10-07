@@ -5,7 +5,7 @@ import requests
 API_URL = "http://localhost:3000/api/auth"
 
 
-st.set_page_config(page_title="TaskFlow Auth", page_icon="🔐", layout="centered")
+st.set_page_config(page_title="Login / Register", page_icon="🔐", layout="centered")
 
 
 # Sidebar status
@@ -15,7 +15,6 @@ with st.sidebar:
     if token:
         st.markdown(f"**Logged in as:** {user_email}")
         if st.button("Logout"):
-            # Clear session state keys related to auth
             st.session_state.pop("token", None)
             st.session_state.pop("email", None)
             st.success("Logged out.")
@@ -44,7 +43,6 @@ with register_tab:
             "password": reg_password,
         }
 
-        # Basic client-side validation
         if not payload["username"] or not payload["email"] or not payload["password"]:
             st.error("Please fill in all fields.")
         else:
