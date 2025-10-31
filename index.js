@@ -1,5 +1,3 @@
-// index.js (UPDATED for Workspaces)
-
 require('dotenv').config();
 
 const express = require('express');
