@@ -47,3 +47,41 @@ except requests.RequestException as exc:
     st.error(f"Network error: {exc}")
 
 
+st.subheader("Create a New Task")
+
+with st.form("new_task_form", clear_on_submit=True):
+    task_title = st.text_input("Task Title")
+    task_description = st.text_area("Task Description")
+    
+    submit_button = st.form_submit_button("Create Task")
+    
+    if submit_button:
+        token = st.session_state.get("token")
+        selected_workspace_id = st.session_state.get("selected_workspace_id")
+        
+        if token and selected_workspace_id:
+            headers = {"x-auth-token": token}
+            payload = {
+                "title": task_title,
+                "description": task_description,
+                "workspace": selected_workspace_id
+            }
+            
+            try:
+                response = requests.post(
+                    f"{API_URL}/tasks",
+                    headers=headers,
+                    json=payload,
+                    timeout=20
+                )
+                
+                if response.status_code == 201:
+                    st.success("Task created successfully!")
+                    st.rerun()
+                else:
+                    st.error(f"Failed to create task: {response.text}")
+            except requests.RequestException as exc:
+                st.error(f"Network error: {exc}")
+        else:
+            st.error("Please log in and select a workspace to create a task.")
+

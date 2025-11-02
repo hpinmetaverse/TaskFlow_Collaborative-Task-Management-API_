@@ -16,6 +16,7 @@ headers = {"x-auth-token": st.session_state["token"]}
 
 st.title("🗂️ My Workspaces")
 
+
 try:
     response = requests.get(f"{API_URL}/workspaces", headers=headers, timeout=20)
     if response.status_code == 200:
