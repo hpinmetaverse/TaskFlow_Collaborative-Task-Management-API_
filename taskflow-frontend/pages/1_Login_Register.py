@@ -1,8 +1,7 @@
 import streamlit as st
 import requests
 
-
-API_URL = "https://taskflow-api-yfne.onrender.com"
+API_URL = "https://taskflow-api-yfne.onrender.com/api/auth"
 
 
 st.set_page_config(page_title="Login / Register", page_icon="🔐", layout="centered")

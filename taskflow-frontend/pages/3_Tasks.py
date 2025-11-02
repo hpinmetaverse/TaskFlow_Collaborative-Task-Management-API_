@@ -4,8 +4,7 @@ import requests
 
 st.set_page_config(page_title="Tasks", page_icon="✅", layout="wide")
 
-
-API_URL = "https://taskflow-api-yfne.onrender.com"
+API_URL = "https://taskflow-api-yfne.onrender.com/api/auth"
 
 
 if not st.session_state.get("token") or not st.session_state.get("selected_workspace_id"):
