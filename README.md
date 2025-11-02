@@ -84,12 +84,12 @@ cd TaskFlow_Collaborative-Task-Management-API_
 **2. Configure Backend Environment**
 
 -   **Install Dependencies:** Navigate to the root directory and install all required npm packages.
-   
+    ```bash
     npm install
-
+    ```
 -   **Create Environment File:** Create a new file named `.env` in the root of the project. This file will hold your secret keys and database connection string.
 -   **Add Environment Variables:** Open the `.env` file and add the following two variables, replacing the placeholder values with your actual credentials:
-  
+    ```
     MONGO_URI=your_mongodb_atlas_connection_string
     JWT_SECRET=your_super_secret_key_for_signing_tokens
-    
+    ```
