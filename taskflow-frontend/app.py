@@ -21,7 +21,7 @@ with st.sidebar:
         st.info("Status: Logged Out")
 
 # Main page content
-st.title("🚀 Welcome to TaskFlow")
+st.title("📌 Welcome to TaskFlow")
 st.subheader("Your Collaborative Task Management Hub")
 
 st.write(
