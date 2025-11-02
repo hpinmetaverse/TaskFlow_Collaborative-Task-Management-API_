@@ -50,7 +50,7 @@ with register_tab:
                 response = requests.post(
                     f"{API_URL}/register",
                     json=payload,
-                    timeout=15,
+                    timeout=60
                 )
                 if 200 <= response.status_code < 300:
                     st.success("Registration successful. You can now log in.")
@@ -84,7 +84,7 @@ with login_tab:
                 response = requests.post(
                     f"{API_URL}/login",
                     json=payload,
-                    timeout=15,
+                    timeout=60
                 )
 
                 if response.status_code == 200:
