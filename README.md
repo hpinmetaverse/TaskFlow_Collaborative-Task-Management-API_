@@ -7,7 +7,7 @@
 
 TaskFlow is a robust, feature-complete REST API built with Node.js and Express, designed to serve as the powerful backend for a collaborative task management application. It features a secure, stateless authentication system, comprehensive workspace and task management, and a scalable, modular architecture.
 
-## 🚀 Live Demonstration
+## Live Demonstration
 
 To provide a live, interactive demonstration of the backend's capabilities, a functional frontend dashboard was built using Python and Streamlit.
 
@@ -19,7 +19,7 @@ You can test the live API through this globally deployed demo application:
 
 ---
 
-## 🎯 Project Overview
+##  Project Overview
 
 TaskFlow was engineered to be a professional, real-world **backend service**, demonstrating a strong command of modern API development principles. The primary focus was creating a secure, well-structured, and reliable service capable of being consumed by any client application.
 
@@ -37,7 +37,7 @@ This project serves as a practical showcase of core backend competencies:
 
 -   **Stateless User Authentication:** Full user registration and login functionality returning a stateless JWT for secure client-side session management.
 -   **Workspace Management:** Endpoints to create and retrieve collaborative workspaces, with authorization checks to ensure a user can only access their own data.
---   **Task Management:** Endpoints to create and retrieve tasks, with relational logic to ensure each task is correctly associated with a user and a workspace.
+-   **Task Management:** Endpoints to create and retrieve tasks, with relational logic to ensure each task is correctly associated with a user and a workspace.
 -   **Modular Architecture:** Organized into a clean structure with routes, controllers, middleware, and models for excellent separation of concerns and maintainability.
 
 ---
@@ -80,8 +80,8 @@ To run this project's backend on your local machine, follow these steps:
 **1. Clone the Repository**
 ```bash
 git clone https://github.com/hpinmetaverse/TaskFlow_Collaborative-Task-Management-API_.git
-cd TaskFlow_Collaborative-Task-Management-API_
-
+cd TaskFlow_Collaborative-Task-Management-API_ 
+```
 **2. Configure Backend Environment**
 
 -   **Install Dependencies:** Navigate to the root directory and install all required npm packages.
